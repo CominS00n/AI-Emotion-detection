@@ -23,3 +23,11 @@ copy these two files create model folder in your project directory and paste it.
 ### run your emotion detection test file
 python TestEmotionDetector.py
 "# AI-Emotion-detection" 
+
+###  Graph
+Loss
+![Machine Learning_TrainTest Plot_loss - Copy](https://github.com/CominS00n/AI-Emotion-detection/assets/79715461/699b8557-f5d9-447e-bf75-45a742ff7e95)
+
+Accuracy
+![MachineLearningTrainTestPlotAccuracy](https://github.com/CominS00n/AI-Emotion-detection/assets/79715461/b5eb0a67-c701-40d5-89b9-6a28fbb26b01)
+
