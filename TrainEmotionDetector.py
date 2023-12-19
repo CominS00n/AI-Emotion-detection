@@ -44,7 +44,7 @@ emotion_model.add(Dropout(0.25))
 emotion_model.add(Flatten())
 emotion_model.add(Dense(1024, activation='relu'))
 emotion_model.add(Dropout(0.5))
-emotion_model.add(Dense(4, activation='softmax'))
+emotion_model.add(Dense(5, activation='softmax'))
 
 cv2.ocl.setUseOpenCL(False)
 
@@ -53,10 +53,10 @@ emotion_model.compile(loss='categorical_crossentropy', optimizer=Adam(learning_r
 # Train the neural network/model
 emotion_model_info = emotion_model.fit_generator(
         train_generator,
-        steps_per_epoch=19211 // 64,
-        epochs=200,
+        steps_per_epoch=24176 // 64,
+        epochs=170,
         validation_data=validation_generator,
-        validation_steps=4810 // 64)
+        validation_steps=9775 // 64)
 
 # save model structure in jason file
 model_json = emotion_model.to_json()
