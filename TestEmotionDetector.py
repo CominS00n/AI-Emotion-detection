@@ -25,7 +25,7 @@ cap = cv2.VideoCapture(0)
 while True:
     # Find haar cascade to draw bounding box around face
     ret, frame = cap.read()
-    frame = cv2.resize(frame, (1280, 720))
+    frame = cv2.resize(frame, (720, 480))
     if not ret:
         break
     face_detector = cv2.CascadeClassifier('haarcascades/haarcascade_frontalface_default.xml')
@@ -43,6 +43,19 @@ while True:
         # predict the emotions
         emotion_prediction = emotion_model.predict(cropped_img)
         maxindex = int(np.argmax(emotion_prediction))
+
+        # Check if the detected emotion
+        if emotion_dict[maxindex] == "Angry":
+            print("เปิดไฟสีฟ้า #29C5F6")
+        elif emotion_dict[maxindex] == "Happy":
+            print("เปิดไปสีเหลือง #E67E22")
+        elif emotion_dict[maxindex] == "Neutral":
+            print("ปิดไฟ")
+        elif emotion_dict[maxindex] == "Sad":
+            print("เปิดไปสีเขียว #27AE60")
+        elif emotion_dict[maxindex] == "Surprised":
+            print("เปิดไปสีเหลือง #F4D03F")
+            
         cv2.putText(frame, emotion_dict[maxindex], (x+5, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
 
     cv2.imshow('Emotion Detection', frame)
