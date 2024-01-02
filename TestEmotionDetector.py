@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 from keras.models import model_from_json
+import time
 
 
 emotion_dict = {0: "Angry", 1: "Happy", 2: "Neutral", 3: "Sad", 4: "Surprised"}
@@ -17,6 +18,8 @@ print("Loaded model from disk")
 
 # start the webcam feed
 cap = cv2.VideoCapture(0)
+
+start_time = time.time()
 
 # pass here your video path
 # you may download one from here : https://www.pexels.com/video/three-girls-laughing-5273028/
@@ -59,6 +62,11 @@ while True:
         cv2.putText(frame, emotion_dict[maxindex], (x+5, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
 
     cv2.imshow('Emotion Detection', frame)
+
+    current_time = time.time()
+    if current_time - start_time >= 10:
+        start_time = current_time
+
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
